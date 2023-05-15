@@ -16,12 +16,14 @@ namespace Business.BusinessAspects.Autofac
         private string[] _roles;
         private IHttpContextAccessor _httpContextAccessor;
         private IUserService _userService;
+        private IEmployeeService _employeeService;
 
         public SecuredOperation(string roles)
         {
             _roles = roles.Split(',');
             _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
             _userService = ServiceTool.Host.Services.GetService<IUserService>();
+            _employeeService = ServiceTool.Host.Services.GetService<IEmployeeService>();
         }
  
         protected override void OnBefore(IInvocation invocation)

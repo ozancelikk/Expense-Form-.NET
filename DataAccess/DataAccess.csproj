@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Concrete\Caching\Abstract\" />
+    <Folder Include="Concrete\Caching\Concrete\Redis\Configs\" />
   </ItemGroup>
 
 </Project>

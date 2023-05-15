@@ -5,6 +5,7 @@ using Core.Utilities.Helpers.FileHelper;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.AspNetCore.Http;
 using MongoDB.Driver;
 using System;
@@ -75,5 +76,6 @@ namespace Business.Concrete
             }
             return new SuccessResult();
         }
+
     }
 }

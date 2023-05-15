@@ -20,7 +20,7 @@ namespace Business.Concrete
         public IResult Add(PasswordRecovery passwordRecovery)
         {
             _passwordRecoveryDal.Add(passwordRecovery);
-            return new SuccessResult("Eklee işlemi başarılı");
+            return new SuccessResult("Ekleme işlemi başarılı");
         }
         public IResult Delete(string eMail)
         {

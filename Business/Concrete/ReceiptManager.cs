@@ -21,15 +21,15 @@ namespace Business.Concrete
         }
         [SecuredOperation("suser,admin,receipt.Add,employee")]
         [BusinessEmployeeResultAspect("receipt-add")]
-        public IResult Add(Receipt entity)
+        public IDataResult<string>  Add(Receipt entity)
         {
             IResult result = BusinessRules.Run();
             if(result!=null)
             {
-                return result;
+                return new ErrorDataResult<string>(result.Message);
             }
             _receiptdal.Add(entity);
-            return new SuccessResult(Messages.AddingSuccessful);
+            return new SuccessDataResult<string>(entity.Id ,Messages.AddingSuccessful);
         }
         [SecuredOperation("suser,admin,receipt.Delete")]
         public IResult Delete(string id)
@@ -68,6 +68,11 @@ namespace Business.Concrete
             return new SuccessDataResult<Receipt>(_receiptdal.Get(r=>r.Id==id),Messages.Successful);
         }
 
+        public IDataResult<List<ReceiptGetDto>> GetDetailsByEmployeeId(string id)
+        {
+            return new SuccessDataResult<List<ReceiptGetDto>>(_receiptdal.GetDetailByEmployeeId(id), Messages.Successful);
+        }
+
         public IDataResult<List<ReceiptGetDto>> ReceiptGetDto()
         {
             return new SuccessDataResult<List<ReceiptGetDto>>(_receiptdal.GetDetailWithReceipt(), Messages.Successful);
@@ -82,6 +87,11 @@ namespace Business.Concrete
                 return new SuccessResult(Messages.UpdateSuccessful);
             }
             throw new FormatException(Messages.AnErrorOccurredDuringTheUpdateProcess);
+        }
+
+        public IDataResult<UploadReceiptDetailDto> UploadReceiptDetailDto(string id)
+        {
+            return new SuccessDataResult<UploadReceiptDetailDto>(_receiptdal.GetReceiptDetails(id), Messages.Successful);
         }
     }
 }

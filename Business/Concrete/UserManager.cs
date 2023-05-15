@@ -2,6 +2,7 @@
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Performance;
 using Core.Aspects.Autofac.Validation;
 using Core.Entities.Concrete;
 using Core.Utilities.Business;
@@ -25,6 +26,7 @@ namespace Business.Concrete
         }
        [SecuredOperation("suser,admin,user.Add")]
         [ValidationAspect(typeof(UserSimpleValidator))]
+        [PerformanceAspect(1)]
         public IResult Add(User user)
         {
             IResult result = BusinessRules.Run(UserExists(user.Email));

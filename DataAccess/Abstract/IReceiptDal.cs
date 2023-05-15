@@ -10,5 +10,7 @@ namespace DataAccess.Abstract
     public interface IReceiptDal: IEntityRepository<Receipt>
     {
         List<ReceiptGetDto> GetDetailWithReceipt();
+        List<ReceiptGetDto> GetDetailByEmployeeId(string id);
+        UploadReceiptDetailDto GetReceiptDetails(string id);
     }
 }

@@ -10,7 +10,7 @@ namespace Business.DependencyResolvers
 
         public void Load(IServiceCollection services)
         {
-            //Queue service DI           
+            //Queue service DI          
             services.AddSingleton<IMailConfigService, MailConfigManager>();
 
         }

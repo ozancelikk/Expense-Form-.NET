@@ -19,17 +19,17 @@ namespace Business.Concrete
             _vouncherDal = vouncherDal;
         }
         //[SecuredOperation("suser,admin,employee,vouncher.Add")]
-        public IResult Add(Vouncher entity)
+        public IDataResult<string> Add(Vouncher entity)
         {
 
             IResult result = BusinessRules.Run(IfVouncherExists(entity.VouncherNo));
 
             if (result != null)
             {
-                return result;
+                return new ErrorDataResult<string>(result.Message);
             }
             _vouncherDal.Add(entity);
-            return new SuccessResult(Messages.AddingSuccessful);
+            return new SuccessDataResult<string>(entity.Id,Messages.AddingSuccessful);
         }
         [SecuredOperation("suser,admin,employee,vouncher.Delete")]
         public IResult Delete(string id)
@@ -96,6 +96,11 @@ namespace Business.Concrete
         public IDataResult<VouncherDetail>GetByVouncherId(string id)
         {
             return new SuccessDataResult<VouncherDetail>(_vouncherDal.GetWithVouncher(), Messages.Successful);
+        }
+
+        public IDataResult<List<VouncherGetDto>> GetDetailsByEmployeeId(string id)
+        {
+           return new SuccessDataResult<List<VouncherGetDto>>(_vouncherDal.GetDetailByVouncherId(id), Messages.Successful);
         }
     }
 }

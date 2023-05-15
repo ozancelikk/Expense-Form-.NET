@@ -16,5 +16,6 @@ namespace Core.Extensions
 
             return ServiceTool.CreateForMicrosoftDependencies(services);
         }
+
     }
 }

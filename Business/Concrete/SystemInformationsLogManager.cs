@@ -20,18 +20,18 @@ namespace Business.Concrete
             _systemInformationslogDal = systemInformationslogDal;
 
         }
-        [SecuredOperation("suser,admin,systemInformationsLog.Add")]
+        [SecuredOperation("suser,admin,systemInformationsLog.Add,employee")]
         public IResult Add(SystemInformationsLog log)
         {
             _systemInformationslogDal.Add(log);
             return new SuccessResult(Messages.NewErrorOccurred);
         }
-        [SecuredOperation("suser,admin,systemInformationsLog.Get")]
+        [SecuredOperation("suser,admin,systemInformationsLog.Get,employee")]
         public IDataResult<List<SystemInformationsLog>> GetAll()
         {
             return new SuccessDataResult<List<SystemInformationsLog>>(_systemInformationslogDal.GetAllSystemInformationLogs(), Messages.Successful);
         }
-        [SecuredOperation("suser,admin,systemInformationsLog.Get")]
+        [SecuredOperation("suser,admin,systemInformationsLog.Get,employee")]
         public IDataResult<SystemInformationsLog> GetById(string id)
         {
             return new SuccessDataResult<SystemInformationsLog>(_systemInformationslogDal.Get(p => p.Id == id), Messages.Successful);
@@ -51,7 +51,7 @@ namespace Business.Concrete
 
 
         }
-        [SecuredOperation("suser,admin,sytemInformationLog.Get")]
+        [SecuredOperation("suser,admin,sytemInformationLog.Get,employee")]
         public IDataResult<ICollection<SystemInformationsLog>> GetAllUnReadMessageByStatus()
         {
             var result = _systemInformationslogDal.GetAll(x => x.Status == false);
@@ -59,7 +59,7 @@ namespace Business.Concrete
             return new SuccessDataResult<ICollection<SystemInformationsLog>>(result, Messages.Successful);
      
         }
-        [SecuredOperation("suser,admin,sytemInformationLog.Get")]
+        [SecuredOperation("suser,admin,sytemInformationLog.Get,employee")]
         public IResult UpdateAllUnReadMessageById(string[] id)          
         {
             long result = 0;
@@ -78,7 +78,7 @@ namespace Business.Concrete
           
             return new ErrorResult(Messages.AnErrorOccurredDuringTheUpdateProcess);
         }
-        [SecuredOperation("suser,admin,sytemInformationLog.Get")]
+        [SecuredOperation("suser,admin,sytemInformationLog.Get,employee")]
         public IResult UpdateUnreadMessage(string id)
         {
             var systemInformationLogModel = _systemInformationslogDal.Get(x=> x.Id == id);
@@ -90,13 +90,13 @@ namespace Business.Concrete
             }
            return new ErrorResult(Messages.AnErrorOccurredDuringTheUpdateProcess);
         }
-        [SecuredOperation("suser,admin,sytemInformationLog.Get")]
+        [SecuredOperation("suser,admin,sytemInformationLog.Get,employee")]
         public IDataResult<ICollection<SystemInformationsLog>> GetAllUnReadMessageWithPage(int page, int limit)
         {
             var result = _systemInformationslogDal.GetAllUnReadMessageWithPage(page, limit);
             return new SuccessDataResult<ICollection<SystemInformationsLog>>(result, Messages.Successful);
         }
-        [SecuredOperation("suser,admin,sytemInformationLog.Get")]
+        [SecuredOperation("suser,admin,sytemInformationLog.Get,employee")]
         public IResult UpdateAllUnReadMessage()
         {
             long result = 0;

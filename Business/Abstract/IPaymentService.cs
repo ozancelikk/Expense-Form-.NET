@@ -14,7 +14,7 @@ namespace Business.Abstract
         IResult Delete(string id);
 
         IDataResult<List<PaymentGetDto>> PaymentGetDto();
-        IDataResult <List<Payment>> GetAll();
+        IDataResult <List<PaymentGetDto>> GetAll();
         IDataResult <Payment> GetById(string id);
         IDataResult<List<Payment>> GetByEmployeeId(string employeeId);
     }

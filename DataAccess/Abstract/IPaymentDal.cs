@@ -10,5 +10,7 @@ namespace DataAccess.Abstract
     public interface IPaymentDal : IEntityRepository<Payment>
     {
         List<PaymentGetDto> GetDetailWithPayment();
+        List<PaymentGetDto> GetAllWithEmployee();
+        List<PaymentGetDto> GetWithEmployeeId(string id);
     }
 }

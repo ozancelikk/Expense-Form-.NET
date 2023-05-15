@@ -8,7 +8,7 @@ namespace Entities.DTOs
 {
     public class PaymentDto:IDto
     {
-        public Employee Employee { get; set; }
+        public string EmployeeId{ get; set; }
         public string Amount { get; set; }
         public string PaymentChoices { get; set; }
         public string Description { get; set; }

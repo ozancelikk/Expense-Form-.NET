@@ -13,7 +13,9 @@ namespace Business.Abstract
         IDataResult<Receipt> GetById(string id);
         IDataResult<List<ReceiptGetDto>> ReceiptGetDto();
         IDataResult<List<Receipt>> GetAllByEmployeeId(string employeeId);
-        IResult Add(Receipt entity);
+        IDataResult <UploadReceiptDetailDto> UploadReceiptDetailDto(string id);
+        IDataResult<List<ReceiptGetDto>> GetDetailsByEmployeeId(string id);
+        IDataResult<string> Add(Receipt entity);
         IResult Update(Receipt entity);
         IResult Delete(string id);
     }

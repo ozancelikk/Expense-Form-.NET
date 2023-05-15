@@ -31,7 +31,6 @@ namespace Business.Concrete
             ILoginActivitiesService loginActivities,
             IOperationClaimService operationClaimService,
             IPasswordRecoveryService passwordRecoveryService,
-            IEmployeeService employeeService,
             IEmployeeOperationClaimService employeeOperationClaimService)
         {
             _loginActivities = loginActivities;
@@ -40,7 +39,6 @@ namespace Business.Concrete
             _userOperationClaimService = userOperationClaimService;
             _operationClaimService = operationClaimService;
             _passwordRecoveryService = passwordRecoveryService;
-            _employeeService = employeeService;
             _employeeOperationClaimService = employeeOperationClaimService;
         }
         [SecuredOperation("suser,admin,user.Add")]

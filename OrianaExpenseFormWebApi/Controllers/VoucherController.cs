@@ -90,6 +90,16 @@ namespace OrianaExpenseFormWebApi.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("GetDetailsByEmployeeId")]
+        public IActionResult GetDetailsByEmployeeId(string id)
+        {
+            var result = _vouncherService.GetDetailsByEmployeeId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
 
         [HttpGet("GetByExpenceId")]
         public IActionResult GetByExpenceId(string id)

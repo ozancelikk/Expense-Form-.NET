@@ -22,7 +22,5 @@ namespace Entities.DTOs
         public double Total { get; set; }
         public double TaxTotal { get; set; }
         public double TaxSum { get; set; }
-        public string VouncherImage { get; set; }
-        public bool Pay { get; set; }
     }
 }

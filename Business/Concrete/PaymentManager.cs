@@ -40,9 +40,9 @@ namespace Business.Concrete
             return new ErrorResult(Messages.AnErrorOccurredDuringTheDeleteProcess);
         }
 
-        public IDataResult<List<Payment>> GetAll()
+        public IDataResult<List<PaymentGetDto>> GetAll()
         {
-            return new SuccessDataResult<List<Payment>>(_paymentDal.GetAll(),Messages.Successful);
+            return new SuccessDataResult<List<PaymentGetDto>>(_paymentDal.GetAllWithEmployee(),Messages.Successful);
         }
 
         public IDataResult<List<Payment>> GetByEmployeeId(string employeeId)

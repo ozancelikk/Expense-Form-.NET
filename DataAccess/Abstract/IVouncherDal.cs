@@ -8,6 +8,7 @@ namespace DataAccess.Abstract
     public interface IVouncherDal : IEntityRepository<Vouncher>
     {
         List<VouncherGetDto> GetDetailWithVouncher();
+        List<VouncherGetDto> GetDetailByVouncherId(string id);
         VouncherDetail GetWithVouncher();
     }
 }

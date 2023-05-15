@@ -15,7 +15,8 @@ namespace Business.Abstract
         IDataResult<Vouncher> GetByExpenceId(string id);
         IDataResult<List<Vouncher>>GetByEmployeeId(string id);
         IDataResult<List<VouncherGetDto>> VouncherGetDto();
-        IResult Add(Vouncher entity);
+        IDataResult<List<VouncherGetDto>> GetDetailsByEmployeeId(string id);
+        IDataResult<string>Add(Vouncher entity);
         IResult Update(Vouncher entity);
         IResult Delete(string id);
     }

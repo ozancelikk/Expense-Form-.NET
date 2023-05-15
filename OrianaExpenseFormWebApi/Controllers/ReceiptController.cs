@@ -59,6 +59,16 @@ namespace OrianaExpenseFormWebApi.Controllers
             }
             return BadRequest(result);  
         }
+        [HttpGet("GetDetailsByEmployeeId")]
+        public IActionResult GetDetailsByEmployeeId(string id)
+        {
+            var result = _receiptService.GetDetailsByEmployeeId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
         [HttpGet("GetAllByEmployeeId")]
         public IActionResult GetAllByemployeeId(string id)
         {
@@ -83,6 +93,16 @@ namespace OrianaExpenseFormWebApi.Controllers
         public IActionResult Update(Receipt receipt)
         {
             var result = _receiptService.Update(receipt);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("GetReceiptDetails")]
+        public IActionResult GetReceiptDetails(string id)
+        {
+            var result = _receiptService.UploadReceiptDetailDto(id);
             if (result.Success)
             {
                 return Ok(result);
